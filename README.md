@@ -37,4 +37,43 @@ if err != nil {
 	log.Fatalf("Error starting server: %s\n", err)
 }
 }
+Commit Code
+git add . git commit -m
 
+Push to GitHub
+git remote add origin https://github.com/Meet-Sutariya/assignment-week11 git branch -M main git push -u origin main
+
+Create Dockerfile
+Use the official Golang image as the base image
+FROM golang:1.22
+
+Set the Current Working Directory inside the container
+WORKDIR /app
+
+Copy the source from the current directory to the Working Directory inside the container
+COPY . .
+
+Build the Go app
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .
+
+Expose port 8080 to the outside world
+EXPOSE 3001
+
+Command to run the executable
+CMD ["./main"]
+
+Building the Docker Image
+docker build -t keyur212/goapi:01 .
+
+Push Docker Image to Docker Hub
+docker tag keyur212/goapi:01 
+
+
+
+Team Members
+Name	Student ID
+1. Bhaumik Donda (500233658)
+2. Pruthvi Gadhiya (500235241)
+3. Ishu Padsala (500234793)
+4. Keyur Savaliya (500235612)
+5. Meet Sutariya (500234832)
